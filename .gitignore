@@ -1,0 +1,58 @@
+# --- OS / editor ---------------------------------------------------------
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# --- Python --------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# --- Data / models -------------------------------------------------------
+# Raw and processed data is large and reproducible; do not commit.
+data/
+!data/.gitkeep
+
+# Trained model artifacts
+models/
+checkpoints/
+runs/
+wandb/
+mlruns/
+lightning_logs/
+
+# --- Node / Next.js (top-level safety net) -------------------------------
+node_modules/
+.next/
+out/
+build/
+
+# --- Env / secrets -------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
