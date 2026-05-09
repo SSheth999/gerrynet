@@ -1,4 +1,4 @@
-# gerrynet
+# GerryNet
 
 Graph Neural Network (GNN) experiments for detecting gerrymandering in U.S.
 congressional district plans.
