@@ -118,8 +118,8 @@ def _fetch_election_margins(state_fips: str, cycle: int) -> pd.DataFrame:
             continue
 
         year_df = df[df["year"] == year]
-        dem = year_df[year_df["party"] == "DEMOCRAT"].groupby("district")["candidatevotes"].sum()
-        rep = year_df[year_df["party"] == "REPUBLICAN"].groupby("district")["candidatevotes"].sum()
+        dem = year_df[year_df["party"] == "DEMOCRAT"].groupby("district")["candidatevotes"].sum().replace(0, float("nan"))
+        rep = year_df[year_df["party"] == "REPUBLICAN"].groupby("district")["candidatevotes"].sum().replace(0, float("nan"))
 
         combined = pd.concat([dem, rep], axis=1, keys=["dem", "rep"]).fillna(0)
         total = combined["dem"] + combined["rep"]
@@ -177,7 +177,7 @@ def _compute_incumbency(state_fips: str, cycle: int) -> pd.DataFrame:
 
 
 def build_features(gdf: gpd.GeoDataFrame, state_fips: str, cycle: int) -> gpd.GeoDataFrame:
-    """Build full 9-feature node feature matrix for one state and cycle.
+    """Build full 12-feature node feature matrix for one state and cycle.
 
     Args:
         gdf:        GeoDataFrame for one state, already filtered and normalized.
